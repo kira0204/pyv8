@@ -216,6 +216,7 @@ elif is_linux or is_freebsd:
         include_dirs += [os.path.join(PYTHON_HOME, 'include')]
 
     extra_compile_args += ["-Wno-write-strings"]
+    extra_compile_args += ["-fpermissive"]
 
     if BOOST_STATIC_LINK:
         extra_link_args += [os.path.join(boost_lib_dir, "lib%s.a") % lib for lib in boost_libs]
@@ -292,7 +293,7 @@ elif is_osx: # contribute by progrium and alec
     else:
         extra_compile_args += ['-g', '-O3']
 
-    extra_compile_args += ["-Wdeprecated-writable-strings", "-stdlib=libc++"]
+    extra_compile_args += ["-Wdeprecated-writable-strings", "-Wno-tautological-undefined-compare", "-Wno-deprecated-declarations", "-stdlib=libc++"]
 
 else:
     print("ERROR: unsupported OS (%s) and platform (%s)" % (os.name, sys.platform))
@@ -321,6 +322,7 @@ if os.path.isdir(native_path):
 
 if V8_I18N:
     extra_objects += ["%slib%s.a" % (icu_path, name) for name in ['icui18n', 'icuuc', 'icudata']]
+
 
 
 def exec_cmd(cmdline_or_args, msg, shell=True, cwd=V8_HOME, env=None, output=False):
