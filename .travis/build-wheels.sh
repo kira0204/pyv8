@@ -18,5 +18,5 @@ done
 
 # Install packages and test
 for PYBIN in /opt/python/*/bin/; do
-    "${PYBIN}/pip" install v8py --no-index -f /io/wheelhouse
+    "${PYBIN}/pip" install git+git://github.com/buffer/pyv8.git#egg=pyv8 --no-index -f /io/wheelhouse
 done
