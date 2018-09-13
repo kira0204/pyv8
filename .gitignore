@@ -16,6 +16,7 @@ release
 dist
 
 # IDE
+.idea
 .project
 .pydevproject
 
