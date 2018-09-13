@@ -2,7 +2,7 @@
 set -e -x
 
 # Install a system package required by our library
-yum install -y boost boost-devel
+yum install -y boost boost-devel systemtap-sdt-devel
 export PATH=/opt/python/cp27-cp27m/bin:$PATH
 python2.7 -V
 
